@@ -299,7 +299,7 @@ export default function ModuloConsultas() {
                 });
             }
         }
-    }, [pacienteSeleccionado]);
+    }, [pacienteSeleccionado, pacientes]);
 
     const iniciarGrabacion = async () => {
         try {
