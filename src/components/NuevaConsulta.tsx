@@ -224,7 +224,7 @@ const pacientes: Paciente[] = [
     },
 ];
 
-export default function ModuloConsultas() {
+export default function NuevaConsulta() {
     const [consultaActiva, setConsultaActiva] = useState<ConsultaActiva>('seleccion-paciente');
     const [pacienteSeleccionado, setPacienteSeleccionado] = useState<string>('');
     const [consultaPrevia, setConsultaPrevia] = useState<string>('nueva');

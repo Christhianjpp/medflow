@@ -240,8 +240,8 @@ export default function ClaimManagement() {
                                     <TableCell>${claim.treatmentCost}</TableCell>
                                     <TableCell>
                                         <span className={`px-2 py-1 rounded-full text-xs font-semibold ${claim.status === 'Aprobado' ? 'bg-green-100 text-green-800' :
-                                                claim.status === 'En Proceso' ? 'bg-yellow-100 text-yellow-800' :
-                                                    'bg-blue-100 text-blue-800'
+                                            claim.status === 'En Proceso' ? 'bg-yellow-100 text-yellow-800' :
+                                                'bg-blue-100 text-blue-800'
                                             }`}>
                                             {claim.status}
                                         </span>
@@ -260,7 +260,180 @@ export default function ClaimManagement() {
                                                         <DialogTitle>Formulario de Reclamos de Gastos Médicos - {claim.id}</DialogTitle>
                                                     </DialogHeader>
                                                     <ScrollArea className="h-[calc(80vh-4rem)] pr-4">
-                                                        {/* Contenido del formulario */}
+                                                        <div className="mt-4">
+                                                            <h2 className="text-xl font-bold mb-4">SECCIÓN A: PARA SER COMPLETADO POR EL ASEGURADO/PROVEEDOR</h2>
+                                                            <div className="grid grid-cols-2 gap-4 mb-4">
+                                                                <div>
+                                                                    <Label>NOMBRE DE LA COMPAÑÍA DE SEGUROS</Label>
+                                                                    <Input value={claim.insuranceCompany} readOnly />
+                                                                </div>
+                                                                <div>
+                                                                    <Label>NÚMERO DE PÓLIZA</Label>
+                                                                    <Input value={claim.policyNumber} readOnly />
+                                                                </div>
+                                                                <div>
+                                                                    <Label>N° CERTIFICADO</Label>
+                                                                    <Input value={claim.certificateNumber} readOnly />
+                                                                </div>
+                                                                <div>
+                                                                    <Label>NOMBRE COMPLETO DEL ASEGURADO PRINCIPAL</Label>
+                                                                    <Input value={claim.patientName} readOnly />
+                                                                </div>
+                                                                <div>
+                                                                    <Label>E-MAIL PERSONAL</Label>
+                                                                    <Input value={claim.email} readOnly />
+                                                                </div>
+                                                                <div>
+                                                                    <Label>CELULAR</Label>
+                                                                    <Input value={claim.phone} readOnly />
+                                                                </div>
+                                                                <div>
+                                                                    <Label>NOMBRE COMPLETO DEL PACIENTE QUE SE ATENDIÓ</Label>
+                                                                    <Input value={claim.patientName} readOnly />
+                                                                </div>
+                                                                <div>
+                                                                    <Label>CÉDULA O PASAPORTE</Label>
+                                                                    <Input value={claim.patientId} readOnly />
+                                                                </div>
+                                                                <div>
+                                                                    <Label>FECHA DE NACIMIENTO</Label>
+                                                                    <Input value={claim.birthDate} readOnly />
+                                                                </div>
+                                                                <div>
+                                                                    <Label>¿TIENE EL PACIENTE SEGURO EN OTRA COMPAÑÍA?</Label>
+                                                                    <Input value={claim.otherInsurance} readOnly />
+                                                                </div>
+                                                            </div>
+
+                                                            <h2 className="text-xl font-bold mb-4">SECCIÓN B: DETALLES DEL RECLAMO</h2>
+                                                            <div className="grid grid-cols-2 gap-4 mb-4">
+                                                                <div>
+                                                                    <Label>PAÍS DE ATENCIÓN</Label>
+                                                                    <Input value={claim.countryOfCare} readOnly />
+                                                                </div>
+                                                                <div>
+                                                                    <Label>LUGAR DE EMPLEO, COLEGIO O UNIVERSIDAD DEL PACIENTE</Label>
+                                                                    <Input value={claim.workplace} readOnly />
+                                                                </div>
+                                                                <div>
+                                                                    <Label>RECLAMO A CAUSA DE UNA ENFERMEDAD</Label>
+                                                                    <Input value={claim.diagnosis ? 'Sí' : 'No'} readOnly />
+                                                                </div>
+                                                                <div>
+                                                                    <Label>FECHA EFECTIVA</Label>
+                                                                    <Input value={claim.illnessEffectiveDate} readOnly />
+                                                                </div>
+                                                                <div>
+                                                                    <Label>FECHA DE LOS PRIMEROS SÍNTOMAS</Label>
+                                                                    <Input value={claim.firstSymptomsDate} readOnly />
+                                                                </div>
+                                                                <div>
+                                                                    <Label>RECLAMO A CAUSA DE ACCIDENTE</Label>
+                                                                    <Input value={claim.accidentDescription ? 'Sí' : 'No'} readOnly />
+                                                                </div>
+                                                            </div>
+                                                            {claim.accidentDescription && (
+                                                                <div className="mb-4">
+                                                                    <Label>DESCRIBA EL ACCIDENTE</Label>
+                                                                    <Textarea value={claim.accidentDescription} readOnly />
+                                                                    <Label>¿DÓNDE OCURRIÓ?</Label>
+                                                                    <Input value={claim.accidentLocation} readOnly />
+                                                                    <Label>¿CÓMO OCURRIÓ?</Label>
+                                                                    <Textarea value={claim.accidentDescription} readOnly />
+                                                                    <Label>¿LA PERSONA RESPONSABLE ES UN TERCERO?</Label>
+                                                                    <Input value={claim.accidentResponsible} readOnly />
+                                                                </div>
+                                                            )}
+                                                            <div>
+                                                                <Label>¿HA RECIBIDO ANTERIORMENTE TRATAMIENTO, INCAPACIDAD HOSPITALARIA POR ALGUNA DE LAS LESIONES O ENFERMEDADES DESCRITAS ARRIBA?</Label>
+                                                                <Input value={claim.previousTreatment} readOnly />
+                                                            </div>
+
+                                                            <h2 className="text-xl font-bold mb-4 mt-6">SECCIÓN C: PARA SER COMPLETADO POR EL MÉDICO PROVEEDOR</h2>
+                                                            <div className="mb-4">
+                                                                <Label>Diagnóstico Principal, Secundario u otros:</Label>
+                                                                {claim.diagnosisCodes.map((code, index) => (
+                                                                    <div key={index} className="grid grid-cols-3 gap-4 mb-2">
+                                                                        <Input value={claim.diagnosis} readOnly />
+                                                                        <Input value={code} readOnly />
+                                                                        <Input value={claim.claimDate} readOnly />
+                                                                    </div>
+                                                                ))}
+                                                            </div>
+                                                            <div className="mb-4">
+                                                                <Label>¿El reclamo es presentado por embarazo?</Label>
+                                                                <Input value={claim.pregnancyRelated} readOnly />
+                                                                {claim.pregnancyRelated === 'Sí' && (
+                                                                    <div>
+                                                                        <Label>Fecha de inicio de embarazo (FUM)</Label>
+                                                                        <Input value={claim.pregnancyStartDate} readOnly />
+                                                                    </div>
+                                                                )}
+                                                            </div>
+                                                            <div className="mb-4">
+                                                                <Label>¿Ha recibido el paciente tratamiento previo por alguna de las condiciones mencionadas?</Label>
+                                                                <Input value={claim.previousTreatment} readOnly />
+                                                            </div>
+                                                            <div className="mb-4">
+                                                                <Label>Favor brindar detalle del cuadro clínico, hallazgos físicos, complicaciones, exámenes de laboratorio y rayos X, así como medicamentos que apoyen el diagnóstico:</Label>
+                                                                <Textarea value={claim.clinicalDetails} readOnly />
+                                                            </div>
+                                                            <div className="mb-4">
+                                                                <Label>Informe de Servicios o Procedimientos Brindados:</Label>
+                                                                <Table>
+                                                                    <TableHeader>
+                                                                        <TableRow>
+                                                                            <TableHead>Fecha de Servicio</TableHead>
+                                                                            <TableHead>Códigos CPT/HCPS</TableHead>
+                                                                            <TableHead>Descripción del Procedimiento</TableHead>
+                                                                            <TableHead>Total Cargos</TableHead>
+                                                                        </TableRow>
+                                                                    </TableHeader>
+                                                                    <TableBody>
+                                                                        {claim.procedures.map((proc, index) => (
+                                                                            <TableRow key={index}>
+                                                                                <TableCell>{claim.claimDate}</TableCell>
+                                                                                <TableCell>{claim.diagnosisCodes[0]}</TableCell>
+                                                                                <TableCell>{proc}</TableCell>
+                                                                                <TableCell>${claim.treatmentCost}</TableCell>
+                                                                            </TableRow>
+                                                                        ))}
+                                                                    </TableBody>
+                                                                </Table>
+                                                            </div>
+                                                            <div className="grid grid-cols-2 gap-4 mb-4">
+                                                                <div>
+                                                                    <Label>¿Tiene Pre-Autorización?</Label>
+                                                                    <Input value={claim.preAuthorization} readOnly />
+                                                                </div>
+                                                                {claim.preAuthorization === 'Sí' && (
+                                                                    <div>
+                                                                        <Label>Número de Pre-Autorización</Label>
+                                                                        <Input value={claim.preAuthorizationNumber} readOnly />
+                                                                    </div>
+                                                                )}
+                                                                <div>
+                                                                    <Label>Nombre del Médico o Proveedor</Label>
+                                                                    <Input value={claim.medicalProvider} readOnly />
+                                                                </div>
+                                                                <div>
+                                                                    <Label>¿Es usted Proveedor de Red?</Label>
+                                                                    <Input value={claim.providerIsInNetwork} readOnly />
+                                                                </div>
+                                                            </div>
+                                                            {claim.providerIsInNetwork === 'No' && (
+                                                                <div className="grid grid-cols-2 gap-4 mb-4">
+                                                                    <div>
+                                                                        <Label>Teléfono</Label>
+                                                                        <Input value={claim.phone} readOnly />
+                                                                    </div>
+                                                                    <div>
+                                                                        <Label>E-mail</Label>
+                                                                        <Input value={claim.email} readOnly />
+                                                                    </div>
+                                                                </div>
+                                                            )}
+                                                        </div>
                                                     </ScrollArea>
                                                 </DialogContent>
                                             </Dialog>

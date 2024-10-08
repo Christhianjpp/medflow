@@ -1,4 +1,4 @@
-import ModuloConsultas from '@/components/Consultas'
+import ModuloConsultas from '@/components/ModuloConsultas'
 import React from 'react'
 
 const pageConsultas = () => {
