@@ -1,10 +1,12 @@
-import AppointmentModule from '@/components/Pacientes'
+import PatientList from '@/components/Paciente'
+
 import React from 'react'
 
 const pagePacientes = () => {
     return (
-        <div>
-            <AppointmentModule />
+        <div className='p-2'>
+            <PatientList />
+
         </div>
     )
 }

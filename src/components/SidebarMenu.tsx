@@ -23,7 +23,11 @@ import {
     DollarSign,
     Settings,
     Activity,
-    MapPin
+    MapPin,
+    AlertTriangle,
+    NotebookIcon,
+    ListCheck,
+    ClipboardCheck
 } from "lucide-react";
 import Link from "next/link"; // Importa Link de Next.js
 import { usePathname } from "next/navigation"; // Importa usePathname
@@ -82,6 +86,18 @@ export default function SidebarMenu({ className }: SidebarProps) {
                             Inicio
                         </Button>
                     </Link>
+                    <Link href="/citas" passHref>
+                        <Button
+                            variant="ghost"
+                            className={cn(
+                                "w-full justify-start hover:bg-[#2c4a6f] text-gray-100",
+                                pathname === "/citas" && "bg-[#2c4a6f] text-white"
+                            )}
+                        >
+                            <NotebookIcon className="mr-2 h-4 w-4" />
+                            Citas
+                        </Button>
+                    </Link>
                     <Link href="/consultas" passHref>
                         <Button
                             variant="ghost"
@@ -90,7 +106,7 @@ export default function SidebarMenu({ className }: SidebarProps) {
                                 pathname === "/consultas" && "bg-[#2c4a6f] text-white"
                             )}
                         >
-                            <Calendar className="mr-2 h-4 w-4" />
+                            <ClipboardCheck className="mr-2 h-4 w-4" />
                             Consultas
                         </Button>
                     </Link>
@@ -140,6 +156,18 @@ export default function SidebarMenu({ className }: SidebarProps) {
                         >
                             <CheckSquare className="mr-2 h-4 w-4" />
                             Tareas
+                        </Button>
+                    </Link>
+                    <Link href="/reclamos" passHref>
+                        <Button
+                            variant="ghost"
+                            className={cn(
+                                "w-full justify-start hover:bg-[#2c4a6f] text-gray-100",
+                                pathname === "/reclamos" && "bg-[#2c4a6f] text-white"
+                            )}
+                        >
+                            <AlertTriangle className="mr-2 h-4 w-4" />
+                            Reclamos
                         </Button>
                     </Link>
                     <Link href="/finanzas" passHref>

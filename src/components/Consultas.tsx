@@ -558,7 +558,7 @@ ${tratamientosSugeridos
     const pacienteActual = pacientes.find((p) => p.id === pacienteSeleccionado);
 
     return (
-        <div className="flex h-screen bg-gray-100">
+        <div className="flex h-screen p-2 py-12 ">
             <div className="flex-1 p-4 overflow-auto">
                 <Card>
                     <CardHeader>

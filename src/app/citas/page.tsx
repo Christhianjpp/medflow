@@ -1,8 +1,12 @@
+import AppointmentModule from '@/components/Pacientes'
 import React from 'react'
 
 const pageCitas = () => {
     return (
-        <div>pageCitas</div>
+        <div>
+            <AppointmentModule />
+
+        </div>
     )
 }
 

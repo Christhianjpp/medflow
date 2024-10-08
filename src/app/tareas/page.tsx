@@ -3,7 +3,7 @@ import React from 'react'
 
 const pageTareas = () => {
     return (
-        <div>
+        <div className='px-6'>
             <TaskManagementWithBlackColumns />
         </div>
     )

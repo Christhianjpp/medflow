@@ -100,3 +100,198 @@ export const pacientes = [
         ]
     },
 ]
+interface Patient {
+    id: number;
+    name: string;
+    idNumber: string;
+    lastVisit: string;
+    nextAppointment: string;
+    birthDate: string;
+    gender: string;
+    phone: string;
+    email: string;
+    address: string;
+}
+
+export const patients: Patient[] = [
+    {
+        id: 1,
+        name: "Ana Pérez",
+        idNumber: "8-123-4567",
+        lastVisit: "10/09/2023",
+        nextAppointment: "15/10/2023",
+        birthDate: "15/05/1980",
+        gender: "Femenino",
+        phone: "+507 6000-1234",
+        email: "ana.perez@email.com",
+        address: "Calle 50, Edificio Global Plaza, Ciudad de Panamá",
+    },
+    {
+        id: 2,
+        name: "Carlos Gómez",
+        idNumber: "PE-456-789",
+        lastVisit: "05/09/2023",
+        nextAppointment: "20/10/2023",
+        birthDate: "03/11/1975",
+        gender: "Masculino",
+        phone: "+507 6000-5678",
+        email: "carlos.gomez@email.com",
+        address: "Avenida Balboa, Edificio Pacific, Ciudad de Panamá",
+    },
+    {
+        id: 3,
+        name: "María Rodríguez",
+        idNumber: "3-234-5678",
+        lastVisit: "12/09/2023",
+        nextAppointment: "18/10/2023",
+        birthDate: "23/08/1990",
+        gender: "Femenino",
+        phone: "+507 6000-2345",
+        email: "maria.rodriguez@email.com",
+        address: "Calle 52, Edificio Metropolis, Ciudad de Panamá",
+    },
+    {
+        id: 4,
+        name: "Juan Martínez",
+        idNumber: "E-345-6789",
+        lastVisit: "08/09/2023",
+        nextAppointment: "22/10/2023",
+        birthDate: "12/12/1985",
+        gender: "Masculino",
+        phone: "+507 6000-6789",
+        email: "juan.martinez@email.com",
+        address: "Via España, Edificio Centenario, Ciudad de Panamá",
+    },
+    {
+        id: 5,
+        name: "Laura Sánchez",
+        idNumber: "6-345-6789",
+        lastVisit: "14/09/2023",
+        nextAppointment: "25/10/2023",
+        birthDate: "09/07/1988",
+        gender: "Femenino",
+        phone: "+507 6000-3456",
+        email: "laura.sanchez@email.com",
+        address: "Calle 50, Edificio Elite, Ciudad de Panamá",
+    },
+];
+interface Seguro {
+    nombre: string
+    poliza: string
+    certificado: string
+    paisAtencion: string
+    lugarEmpleo: string
+    ocupacion: string
+}
+
+interface Tratamiento {
+    id: number
+    paciente: string
+    fechaInicio: string
+    tipo: string
+    idNumber: string
+    estado: 'En progreso' | 'Completado' | 'Programado'
+    fechaNacimiento: string
+    genero: 'Masculino' | 'Femenino'
+    seguro: Seguro
+    historialMedico: string[]
+}
+
+// Static data with the correct type
+export const tratamientos: Tratamiento[] = [
+    {
+        id: 1,
+        idNumber: '4-3-13-322',
+        paciente: "Juan Pérez",
+        fechaInicio: "2023-11-01",
+        tipo: "Fisioterapia",
+        estado: "En progreso",
+        fechaNacimiento: "1990-07-30",
+        genero: "Femenino",
+        seguro: {
+            nombre: "Seguros Bienestar",
+            poliza: "POL-002-2023",
+            certificado: "CERT-789012",
+            paisAtencion: "Panamá",
+            lugarEmpleo: "Corporación XYZ",
+            ocupacion: "Contador"
+        },
+        historialMedico: ["2023-02-14 Tratamiento para hipertensión"]
+    },
+    {
+        id: 2,
+        idNumber: '3-23-423-112',
+        paciente: "María García",
+        fechaInicio: "2023-10-15",
+        tipo: "Quimioterapia",
+        estado: "Completado",
+        fechaNacimiento: "1982-03-18",
+        genero: "Femenino",
+        seguro: {
+            nombre: "Seguros Bienestar",
+            poliza: "POL-002-2023",
+            certificado: "CERT-789012",
+            paisAtencion: "Panamá",
+            lugarEmpleo: "Corporación XYZ",
+            ocupacion: "Contador"
+        },
+        historialMedico: ["2023-02-14 Tratamiento para hipertensión"]
+    },
+    {
+        id: 3,
+        idNumber: '5-23-2342-52',
+        paciente: "Carlos Rodríguez",
+        fechaInicio: "2023-11-10",
+        tipo: "Rehabilitación",
+        estado: "En progreso",
+        fechaNacimiento: "1990-07-30",
+        genero: "Femenino",
+        seguro: {
+            nombre: "Seguros Bienestar",
+            poliza: "POL-002-2023",
+            certificado: "CERT-789012",
+            paisAtencion: "Panamá",
+            lugarEmpleo: "Corporación XYZ",
+            ocupacion: "Contador"
+        },
+        historialMedico: ["2023-02-14 Tratamiento para hipertensión"]
+    },
+    {
+        id: 4,
+        idNumber: '6-523-6511-42',
+        paciente: "Ana Martínez",
+        fechaInicio: "2023-09-22",
+        tipo: "Terapia ocupacional",
+        estado: "En progreso",
+        fechaNacimiento: "1982-03-18",
+        genero: "Masculino",
+        seguro: {
+            nombre: "Seguros Bienestar",
+            poliza: "POL-002-2023",
+            certificado: "CERT-789012",
+            paisAtencion: "Panamá",
+            lugarEmpleo: "Corporación XYZ",
+            ocupacion: "Contador"
+        },
+        historialMedico: ["2023-02-14 Tratamiento para hipertensión"]
+    },
+    {
+        id: 5,
+        idNumber: '7-42-323-32',
+        paciente: "Luis Sánchez",
+        fechaInicio: "2023-10-30",
+        tipo: "Terapia del habla",
+        estado: "Programado",
+        fechaNacimiento: "1982-03-18",
+        genero: "Femenino",
+        seguro: {
+            nombre: "Seguros Bienestar",
+            poliza: "POL-002-2023",
+            certificado: "CERT-789012",
+            paisAtencion: "Panamá",
+            lugarEmpleo: "Corporación XYZ",
+            ocupacion: "Contador"
+        },
+        historialMedico: ["2023-02-14 Tratamiento para hipertensión"]
+    }
+]
